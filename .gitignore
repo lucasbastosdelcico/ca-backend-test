@@ -1,0 +1,82 @@
+## Compiled files
+bin/
+obj/
+out/
+
+## User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+## Build results
+*.dll
+*.exe
+*.app
+*.log
+*.cache
+*.pdb
+*.db
+
+## VS Code
+.vscode/
+*.code-workspace
+
+## Rider
+.idea/
+
+## ASP.NET Scaffolding
+ScaffoldingReadMe.txt
+
+## Entity Framework
+Migrations/
+
+## dotCover
+*.dotCover
+
+## Test results
+TestResults/
+*.trx
+
+## Logs
+*.log
+
+## Temporary files
+*.tmp
+*.bak
+*.old
+*.swp
+
+## Package managers
+packages/
+*.nupkg
+*.snupkg
+
+## NuGet
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+## .NET Core
+*.deps.json
+*.runtimeconfig.json
+*.runtimeconfig.dev.json
+*.global.json
+
+## Others
+*.DS_Store
+*.env
+*.db
+
+# Resharper
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+## Publish outputs
+publish/
+wwwroot/
+
+.vs/
+# Ignore secrets.json if using user secrets
+secrets.json
