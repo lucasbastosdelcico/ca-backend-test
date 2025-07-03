@@ -42,7 +42,7 @@ namespace Billing.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateAsync([FromBody] ProductCommand product)
         {
-            if (product.Id <= 0) return BadRequest("ID must be greater than zero.");
+            if (int.Parse(product.Id) <= 0) return BadRequest("ID must be greater than zero.");
             if (product == null) return BadRequest("Product cannot be null.");
             await _productServices.UpdateAsync(product).ConfigureAwait(false);
             return NoContent();

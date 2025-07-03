@@ -1,6 +1,10 @@
 ﻿using Application.Interfaces;
 using Application.Services;
+using Billing.Application.Interfaces;
+using Billing.Application.Interfaces.InfraInterfaces;
+using Billing.Application.Services;
 using Billing.Domain.Interfaces;
+using Billing.Infrastructure.ExternalBilling;
 using Billing.Infrastructure.Repositories;
 
 namespace Billing.Middlewere.Extensions
@@ -12,11 +16,13 @@ namespace Billing.Middlewere.Extensions
             // Repositories
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
+           
 
             // Services
             services.AddScoped<ICustomerServices, CustomerServices>();
             services.AddScoped<IProductServices, ProductServices>();
-
+            services.AddScoped<IExternalBillingService, ExternalBillingService>();
+            services.AddScoped<IExternalBillingClient, ExternalBilling>();
             return services;
         }
     }

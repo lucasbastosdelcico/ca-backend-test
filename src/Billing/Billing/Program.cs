@@ -1,3 +1,5 @@
+using Billing.Application.Services;
+using Billing.Infrastructure.ExternalBilling;
 using Billing.Infrastructure.Persistence;
 using Billing.Middlewere.Extensions;
 using Microsoft.EntityFrameworkCore;
@@ -24,6 +26,8 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 
 builder.Services.AddProjectDependencies();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+builder.Services.AddHttpClient<ExternalBilling>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
