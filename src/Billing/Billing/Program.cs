@@ -1,10 +1,7 @@
-using Application.Interfaces;
-using Application.Services;
-using Billing.Domain.Interfaces;
 using Billing.Infrastructure.Persistence;
-using Billing.Infrastructure.Repositories;
 using Billing.Middlewere.Extensions;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,7 +23,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseMySql(connectionString, ServerVersion.AutoDetect(connectionString)));
 
 builder.Services.AddProjectDependencies();
-
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -28,8 +28,7 @@ out/
 ## ASP.NET Scaffolding
 ScaffoldingReadMe.txt
 
-## Entity Framework
-Migrations/
+
 
 ## dotCover
 *.dotCover
