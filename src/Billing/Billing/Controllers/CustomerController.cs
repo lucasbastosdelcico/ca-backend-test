@@ -24,10 +24,10 @@ namespace Billing.Controllers
             return Ok(result);
         }
         [HttpGet]
-        [Route("{id:int}")]
-        public async Task<IActionResult> GetByIdAsync(int id)
+        [Route("{id:guid}")]
+        public async Task<IActionResult> GetByIdAsync(Guid id)
         {
-            if (id <= 0) return BadRequest("ID must be greater than zero.");
+            if (id.Equals(0)) return BadRequest("ID must be greater than zero.");
             var result = await _customerServices.GetByIdAsync(id).ConfigureAwait(false);
             if (result == null) return NotFound($"Customer with ID {id} not found.");
             return Ok(result);
@@ -42,16 +42,16 @@ namespace Billing.Controllers
         [HttpPut]
         public async Task<IActionResult> UpdateAsync([FromBody] CustomerCommand customer)
         {
-            if (int.Parse(customer.Id) <= 0) return BadRequest("ID must be greater than zero.");
+            if (customer.Id.Equals(0)) return BadRequest("ID must be greater than zero.");
             if (customer == null) return BadRequest("Customer cannot be null.");
             await _customerServices.UpdateAsync(customer).ConfigureAwait(false);
             return NoContent();
         }
         [HttpDelete]
-        [Route("{id:int}")]
-        public async Task<IActionResult> DeleteAsync(int id)
+        [Route("{id:guid}")]
+        public async Task<IActionResult> DeleteAsync(Guid id)
         {
-            if (id <= 0) return BadRequest("ID must be greater than zero.");
+            if (id.Equals(0)) return BadRequest("ID must be greater than zero.");
             await _customerServices.DeleteAsync(id).ConfigureAwait(false);
             return NoContent();
         }

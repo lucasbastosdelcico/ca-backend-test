@@ -23,7 +23,7 @@ namespace Billing.Infrastructure.Repositories
         {
             return await _context.Products.AsNoTracking().ToListAsync();
         }
-        public async Task<Product> GetByIdAsync(int id)
+        public async Task<Product> GetByIdAsync(Guid id)
         {
             return await _context.Products.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id) ?? new Product();
         }
@@ -39,7 +39,7 @@ namespace Billing.Infrastructure.Repositories
             _context.Products.Update(product);
             await _context.SaveChangesAsync();
         }
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(Guid id)
         {
             var product = await GetByIdAsync(id);
             if (product == null) throw new KeyNotFoundException($"Product with ID {id} not found.");

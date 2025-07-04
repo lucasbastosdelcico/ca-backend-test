@@ -9,9 +9,13 @@ namespace Application.Mappings
     {
         public Mappings()
         {
-            CreateMap<CustomerCommand, Customer>().ReverseMap();
             CreateMap<Product, ProductCommand>().ReverseMap();
-            CreateMap<Billing.Domain.Entities.Billing, BillingDTO>().ReverseMap();
+            CreateMap<Customer, CustomerCommand>().ReverseMap();
+            CreateMap<BillingLine, BillingLineDTO>().ReverseMap();
+            CreateMap<BillingLine, BillingLineDTO>().ReverseMap();
+            CreateMap<BillingLineDTO, BillingLine>().ReverseMap();
+            CreateMap<BillingDTO, Billing.Domain.Entities.Billing>()
+                .ForMember(dest => dest.BillingLines, opt => opt.MapFrom(src => src.BillingLines)).ReverseMap();
         }
     }
     

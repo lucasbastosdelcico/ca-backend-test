@@ -16,7 +16,8 @@ namespace Billing.Middlewere.Extensions
             // Repositories
             services.AddScoped<ICustomerRepository, CustomerRepository>();
             services.AddScoped<IProductRepository, ProductRepository>();
-           
+            services.AddScoped<IBillingRepository, BillingRepository>();
+
 
             // Services
             services.AddScoped<ICustomerServices, CustomerServices>();

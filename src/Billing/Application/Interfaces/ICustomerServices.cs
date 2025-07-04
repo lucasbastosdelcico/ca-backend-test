@@ -10,10 +10,10 @@ namespace Application.Interfaces
     public interface ICustomerServices
     {
         Task<IEnumerable<CustomerCommand>> GetAllAsync();
-        Task<CustomerCommand> GetByIdAsync(int id);
+        Task<CustomerCommand> GetByIdAsync(Guid id);
         Task AddAsync(CustomerCommand customer);
         Task UpdateAsync(CustomerCommand customer);
-        Task DeleteAsync(int id);
+        Task DeleteAsync(Guid id);
 
     }
 }

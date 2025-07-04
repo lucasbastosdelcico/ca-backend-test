@@ -29,7 +29,7 @@ namespace Application.Services
             var result = await _productRepository.GetAllAsync().ConfigureAwait(false);
             return _mapper.Map<IEnumerable<ProductCommand>>(result);
         }
-        public async Task<ProductCommand> GetByIdAsync(int id)
+        public async Task<ProductCommand> GetByIdAsync(Guid id)
         {
             var result = await _productRepository.GetByIdAsync(id).ConfigureAwait(false);
             return _mapper.Map<ProductCommand>(result);
@@ -46,9 +46,9 @@ namespace Application.Services
             var newProduct = _mapper.Map<Product>(product);
             await _productRepository.UpdateAsync(newProduct).ConfigureAwait(false);
         }
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(Guid id)
         {
-            if (id <= 0) throw new ArgumentOutOfRangeException(nameof(id), "ID must be greater than zero.");
+            if (id.Equals(0)) throw new ArgumentOutOfRangeException(nameof(id), "ID must be greater than zero.");
             await _productRepository.DeleteAsync(id).ConfigureAwait(false);
         }
     }

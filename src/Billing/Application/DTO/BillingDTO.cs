@@ -25,6 +25,6 @@ namespace Billing.Application.DTO
         public string? Currency { get; set; }
 
         [JsonPropertyName("lines")]
-        public List<BillingLineDTO>? BillingLines { get; set; } 
+        public List<BillingLineDTO>? BillingLines { get; set; }
     }
 }

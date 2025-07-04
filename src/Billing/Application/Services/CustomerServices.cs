@@ -25,7 +25,7 @@ namespace Application.Services
             return _mapper.Map<IEnumerable<CustomerCommand>>(result);
 
         }
-        public async Task<CustomerCommand> GetByIdAsync(int id)
+        public async Task<CustomerCommand> GetByIdAsync(Guid id)
         {
             var result = await _customerRepository.GetByIdAsync(id).ConfigureAwait(false);
             return _mapper.Map<CustomerCommand>(result);
@@ -42,9 +42,9 @@ namespace Application.Services
             if (customer == null) throw new ArgumentNullException(nameof(customer));
             await _customerRepository.UpdateAsync(newCustomer).ConfigureAwait(false);
         }
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(Guid id)
         {
-            if (id <= 0) throw new ArgumentOutOfRangeException(nameof(id), "ID must be greater than zero.");
+            if (id.Equals(0)) throw new ArgumentOutOfRangeException(nameof(id), "ID must be greater than zero.");
             await _customerRepository.DeleteAsync(id).ConfigureAwait(false);
         }
     }

@@ -10,9 +10,9 @@ namespace Application.Interfaces
     public interface IProductServices
     {
         Task<IEnumerable<ProductCommand>> GetAllAsync();
-        Task<ProductCommand> GetByIdAsync(int id);
+        Task<ProductCommand> GetByIdAsync(Guid id);
         Task AddAsync(ProductCommand product);
         Task UpdateAsync(ProductCommand product);
-        Task DeleteAsync(int id);
+        Task DeleteAsync(Guid id);
     }
 }

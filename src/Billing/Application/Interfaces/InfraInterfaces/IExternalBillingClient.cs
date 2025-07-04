@@ -9,7 +9,7 @@ namespace Billing.Application.Interfaces.InfraInterfaces
 {
     public interface IExternalBillingClient
     {
-        Task<List<BillingDTO>> GetBillingsAsync();
-        Task<BillingDTO> GetBillingsByIdAsync(Guid id);
+        Task<IEnumerable<BillingDTO>> GetBillingsAsync();
+        Task<BillingDTO> GetBillingsByIdAsync(int id);
     }
 }

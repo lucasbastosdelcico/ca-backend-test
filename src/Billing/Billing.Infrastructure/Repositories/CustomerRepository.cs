@@ -17,7 +17,7 @@ namespace Billing.Infrastructure.Repositories
         {
             return await _context.Customers.AsNoTracking().ToListAsync();
         }
-        public async Task<Customer> GetByIdAsync(int id)
+        public async Task<Customer> GetByIdAsync(Guid id)
         {
             return await _context.Customers.AsNoTracking().FirstOrDefaultAsync(p => p.Id == id) ?? new Customer();
         }
@@ -34,7 +34,7 @@ namespace Billing.Infrastructure.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(Guid id)
         {
             var customer = await GetByIdAsync(id);
             if (customer == null) throw new KeyNotFoundException($"Customer with ID {id} not found.");
